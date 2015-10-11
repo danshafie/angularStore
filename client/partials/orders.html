@@ -1,0 +1,47 @@
+<div class="container" ng-controller="mainController">
+<a href="#/dashboard">Dashboard</a> | <a href="#/products">Products</a> | <a href="#/customers">Customers</a> 
+
+<h2>Add a new order!</h2>
+<form>
+	<label>Customer:</label>
+	<select class="form-control" ng-model='order.name'>
+		<option value="{{customer.customerName}}" ng-repeat="customer in customers">{{customer.customerName}}</option>
+	</select>
+	<label>Order:</label>
+	<select class="form-control" ng-model='order.quantity'>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
+	<select class="form-control" ng-model='order.product'>
+		<option ng-repeat="product in products" value="{{product.productName}}">{{product.productName}}</option>
+		<option value="Nike Shoes">Nike Shoes</option>
+		<option value="Black Belt">Black Belt</option>
+		<option value="Candle">Candle</option>
+		<option value="Backpack">Backpack</option>
+	</select><br>
+	<input type="submit" value="Order" class="btn btn-primary" ng-click="addOrder()">
+</form>
+
+<input type="text" placeholder="filter..." class="pull-right" ng-model="filter_name"><br><br>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Customer Name</th>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="order in orders | filter: filter_name">
+			<td>{{order.customerName}}</td>
+			<td>{{order.product}}</td>
+			<td>{{order.quantity}}</td>
+			<td>{{order.created | date: 'medium'}}</td>
+		</tr>
+	</tbody>
+</table>
+</div>

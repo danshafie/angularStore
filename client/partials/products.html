@@ -1,0 +1,34 @@
+<div class="container" ng-controller="mainController">
+<a href="#/dashboard">Dashboard</a> | <a href="#/orders">Orders</a> | <a href="#/customers">Customers</a>  
+
+
+<input type="text" placeholder="search..." class='pull-right'>
+
+<h2>Add new product!</h2>
+<form>
+	<label>Name:</label>
+	<input type="text" ng-model="product.name"><br>
+	<label>Description:</label>
+	<input type="text" ng-model="product.description"><br>
+	<label>Initial Quantity:</label>
+	<select class="form-control" ng-model="product.quantity">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select><br>
+	<input type="submit" value="Create" class="btn btn-primary" ng-click="addProduct()">
+</form>
+
+
+<h1>Products</h1>
+<ul ng-repeat="product in products">
+	<li>{{product.productName}}</li>
+</ul>
+<ul>
+	<li>Nike Shoes</li>
+	<li>Black Belt</li>
+	<li>Candle</li>
+	<li>Backpack</li>	
+</ul>
+</div>

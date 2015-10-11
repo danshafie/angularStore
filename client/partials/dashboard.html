@@ -1,0 +1,36 @@
+<div class="container" ng-controller="mainController">
+<a href="#/products">Products</a> | <a href="#/orders">Orders</a> | <a href="#/customers">Customers</a>  
+
+<br><br>
+
+<input type="text" placeholder="search product..." class='pull-right' ng-model="filter_name"><br><br>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>Items Left</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="product in products | filter: filter_name | limitTo: 8">	
+			<td>{{product.productName}}</td>
+			<td>{{product.quantity}}</td>
+		</tr>
+	</tbody>
+</table>
+<a href="#/products">show all products</a>
+
+<h3>Recent Orders</h3>
+<ul ng-repeat="order in orders | limitTo: 3">
+	<li> {{order.customerName}} purchased {{order.product}} on {{order.created | date: medium}}</li>
+</ul>
+<a href="#/orders">show all orders...</a>
+
+<h3>New Customers</h3>
+
+<ul ng-repeat="customer in customers | limitTo: 3">
+	<li>{{customer.customerName}} joined the store on {{customer.created | date: medium}}</li>
+</ul>
+<a href="#/customers">show all customers</a>
+</div>
